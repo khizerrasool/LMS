@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="local/kopere_dashboard/db" VERSION="20141018" COMMENT="XMLDB file for Moodle local/kopere_dashboard"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd">
+    <TABLES>
+        <TABLE NAME="kopere_dashboard_menu" COMMENT="">
+            <FIELDS>
+                <FIELD NAME="id"            TYPE="int"  LENGTH="10"  NOTNULL="true"  SEQUENCE="true" />
+                <FIELD NAME="menuid"        TYPE="int"  LENGTH="10"  NOTNULL="false" SEQUENCE="false" />
+                <FIELD NAME="title"         TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" />
+                <FIELD NAME="link"          TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" />
+                <FIELD NAME="icon"          TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" />
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id" />
+            </KEYS>
+        </TABLE>
+        <TABLE NAME="kopere_dashboard_webpages" COMMENT="">
+            <FIELDS>
+                <FIELD NAME="id"            TYPE="int"  LENGTH="10"  NOTNULL="true"  SEQUENCE="true" />
+                <FIELD NAME="menuid"        TYPE="int"  LENGTH="10"  NOTNULL="false" SEQUENCE="false" />
+                <FIELD NAME="courseid"      TYPE="int"  LENGTH="10"  NOTNULL="false" SEQUENCE="false" />
+                <FIELD NAME="title"         TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" />
+                <FIELD NAME="link"          TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" />
+                <FIELD NAME="text"          TYPE="text"              NOTNULL="false" SEQUENCE="false" />
+                <FIELD NAME="theme"         TYPE="char" LENGTH="32"  NOTNULL="false" SEQUENCE="false" />
+                <FIELD NAME="visible"       TYPE="int"  LENGTH="1"   NOTNULL="false" SEQUENCE="false" />
+                <FIELD NAME="pageorder"     TYPE="int"  LENGTH="10"  NOTNULL="false" SEQUENCE="false" />
+                <FIELD NAME="config"        TYPE="text"              NOTNULL="false" SEQUENCE="false" />
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id" />
+            </KEYS>
+        </TABLE>
+        <TABLE NAME="kopere_dashboard_events" COMMENT="">
+            <FIELDS>
+                <FIELD NAME="id"            TYPE="int"  LENGTH="10"  NOTNULL="true"  SEQUENCE="true" />
+                <FIELD NAME="module"        TYPE="char" LENGTH="60"  NOTNULL="false" SEQUENCE="false" />
+                <FIELD NAME="event"         TYPE="char" LENGTH="100" NOTNULL="false" SEQUENCE="false" />
+                <FIELD NAME="status"        TYPE="int"  LENGTH="1"   NOTNULL="false" SEQUENCE="false" />
+                <FIELD NAME="userfrom"      TYPE="char" LENGTH="20"  NOTNULL="false" SEQUENCE="false" />
+                <FIELD NAME="userto"        TYPE="char" LENGTH="20"  NOTNULL="false" SEQUENCE="false" />
+                <FIELD NAME="subject"       TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" />
+                <FIELD NAME="message"       TYPE="text"              NOTNULL="false" SEQUENCE="false" />
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id" />
+            </KEYS>
+        </TABLE>
+
+        <TABLE NAME="kopere_dashboard_reportcat" COMMENT="">
+            <FIELDS>
+                <FIELD NAME="id"            TYPE="int"  LENGTH="10"  NOTNULL="true"  SEQUENCE="true" />
+                <FIELD NAME="title"         TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" />
+                <FIELD NAME="type"          TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" />
+                <FIELD NAME="image"         TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" />
+                <FIELD NAME="enable"        TYPE="int"  LENGTH="1"   NOTNULL="false" SEQUENCE="false" />
+                <FIELD NAME="enablesql"     TYPE="text"              NOTNULL="false" SEQUENCE="false" />
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id" />
+            </KEYS>
+        </TABLE>
+        <TABLE NAME="kopere_dashboard_reports" COMMENT="">
+            <FIELDS>
+                <FIELD NAME="id"            TYPE="int"  LENGTH="10"  NOTNULL="true"  SEQUENCE="true" />
+                <FIELD NAME="reportcatid"   TYPE="int"  LENGTH="10"  NOTNULL="true"  SEQUENCE="false" />
+                <FIELD NAME="reportkey"     TYPE="char" LENGTH="20"  NOTNULL="false" SEQUENCE="false" />
+                <FIELD NAME="title"         TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" />
+                <FIELD NAME="enable"        TYPE="int"  LENGTH="1"   NOTNULL="false" SEQUENCE="false" />
+                <FIELD NAME="enablesql"     TYPE="text"              NOTNULL="false" SEQUENCE="false" />
+                <FIELD NAME="reportsql"     TYPE="text"              NOTNULL="false" SEQUENCE="false" />
+                <FIELD NAME="prerequisit"   TYPE="char" LENGTH="60"  NOTNULL="false" SEQUENCE="false" />
+                <FIELD NAME="columns"       TYPE="text"              NOTNULL="false" SEQUENCE="false" />
+                <FIELD NAME="foreach"       TYPE="text"              NOTNULL="false" SEQUENCE="false" />
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id" />
+            </KEYS>
+        </TABLE>
+
+        <TABLE NAME="kopere_dashboard_performance" COMMENT="">
+            <FIELDS>
+                <FIELD NAME="id"            TYPE="int"   LENGTH="10"  NOTNULL="true"  SEQUENCE="true" />
+                <FIELD NAME="time"          TYPE="int"   LENGTH="10"  NOTNULL="true"  SEQUENCE="false" />
+                <FIELD NAME="type"          TYPE="char"  LENGTH="7"   NOTNULL="true"  SEQUENCE="false" />
+                <FIELD NAME="value"         TYPE="float" LENGTH="5"   NOTNULL="true"  SEQUENCE="false" DECIMALS="3" />
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id" />
+                <KEY NAME="unique"  TYPE="unique"  FIELDS="time,type" />
+            </KEYS>
+        </TABLE>
+
+        <TABLE NAME="kopere_dashboard_reportlogin" COMMENT="">
+            <FIELDS>
+                <FIELD NAME="id"            TYPE="int"   LENGTH="10"  NOTNULL="true"  SEQUENCE="true" />
+                <FIELD NAME="userid"        TYPE="int"   LENGTH="10"  NOTNULL="true"  SEQUENCE="false" />
+                <FIELD NAME="ip"            TYPE="char"  LENGTH="32"  NOTNULL="true"  SEQUENCE="false" />
+                <FIELD NAME="timecreated"   TYPE="int"   LENGTH="20"  NOTNULL="true"  SEQUENCE="false" />
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id" />
+            </KEYS>
+        </TABLE>
+
+        <TABLE NAME="kopere_dashboard_courseacces" COMMENT="">
+            <FIELDS>
+                <FIELD NAME="id"            TYPE="int"   LENGTH="10"  NOTNULL="true"  SEQUENCE="true" />
+                <FIELD NAME="userid"        TYPE="int"   LENGTH="10"  NOTNULL="true"  SEQUENCE="false" />
+                <FIELD NAME="courseid"      TYPE="int"   LENGTH="10"  NOTNULL="true"  SEQUENCE="false" />
+                <FIELD NAME="context"       TYPE="int"   LENGTH="10"  NOTNULL="true"  SEQUENCE="false" />
+                <FIELD NAME="contagem"      TYPE="int"   LENGTH="10"  NOTNULL="true"  SEQUENCE="false" />
+                <FIELD NAME="timecreated"   TYPE="int"   LENGTH="20"  NOTNULL="true"  SEQUENCE="false" />
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id" />
+                <KEY NAME="unique"  TYPE="unique"  FIELDS="courseid,userid,context" />
+            </KEYS>
+        </TABLE>
+
+    </TABLES>
+</XMLDB>
